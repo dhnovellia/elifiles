@@ -19,7 +19,6 @@
       min-height: 100vh;
     }
 
-    /* ── Page shell ── */
     .page {
       background: #f5f0e8;
       width: 100%;
@@ -30,14 +29,12 @@
         0 0 0 1px #c8b89a,
         6px 6px 30px rgba(0,0,0,0.7),
         0 0 80px rgba(0,0,0,0.4);
-      /* paper aging */
       background-image:
         radial-gradient(ellipse at 20% 10%, rgba(180,140,80,0.12) 0%, transparent 60%),
         radial-gradient(ellipse at 80% 90%, rgba(160,120,60,0.10) 0%, transparent 60%),
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
     }
 
-    /* ── TOP SECRET stamp ── */
     .stamp-top {
       position: absolute;
       top: 18px;
@@ -70,7 +67,6 @@
       font-family: 'Courier New', monospace;
     }
 
-    /* ── Document header ── */
     .doc-header {
       border-bottom: 2px solid #333;
       padding-bottom: 18px;
@@ -120,7 +116,6 @@
 
     .meta-grid span { display: block; border-bottom: 1px dotted #aaa; padding-bottom: 2px; }
 
-    /* ── Section label ── */
     .section-label {
       font-size: 9px;
       letter-spacing: 4px;
@@ -131,7 +126,6 @@
       border-bottom: 1px solid #bbb;
     }
 
-    /* ── Body text ── */
     p {
       font-size: 13.5px;
       line-height: 2.1;
@@ -141,7 +135,6 @@
       letter-spacing: 0.3px;
     }
 
-    /* ── Redaction bar ── */
     .r {
       display: inline-block;
       background: #111;
@@ -151,11 +144,9 @@
       vertical-align: middle;
       position: relative;
       top: -1px;
-      /* slight gloss */
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 1px 2px rgba(0,0,0,0.5);
     }
 
-    /* width variants */
     .r-xs  { width: 44px;  height: 13px; }
     .r-s   { width: 72px;  height: 13px; }
     .r-m   { width: 110px; height: 13px; }
@@ -163,7 +154,6 @@
     .r-xl  { width: 210px; height: 13px; }
     .r-xxl { width: 280px; height: 13px; }
 
-    /* block-level redaction (full-line) */
     .r-block {
       display: block;
       background: #111;
@@ -175,21 +165,26 @@
     .r-block.half { width: 55%; }
     .r-block.three-quarter { width: 78%; }
 
-    /* ── Visible suspect names ── */
     .name {
       font-weight: 700;
       color: #111;
       letter-spacing: 0.5px;
     }
 
-    /* ── Key phrase (islands / plane) ── */
     .kw {
       font-style: italic;
       font-weight: 600;
       color: #111;
     }
 
-    /* ── Handwritten annotation ── */
+    /* Jalen Brunson — highlighted as innocent/exonerated */
+    .innocent {
+      font-weight: 700;
+      color: #1a5c1a;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #1a5c1a;
+    }
+
     .annotation {
       font-family: 'Special Elite', cursive;
       font-size: 13px;
@@ -199,13 +194,14 @@
       opacity: 0.85;
       pointer-events: none;
     }
-    .ann-1 { right: 55px; top: 310px; }
-    .ann-2 { left:  48px; top: 580px; }
-    .ann-3 { right: 42px; top: 860px; }
-    .ann-4 { left:  50px; top: 1140px; }
-    .ann-5 { right: 44px; top: 1420px; }
+    .ann-1 { right: 55px;  top: 310px; }
+    .ann-2 { left:  48px;  top: 560px; }
+    .ann-3 { right: 42px;  top: 880px; }
+    .ann-4 { left:  50px;  top: 1180px; }
+    .ann-5 { right: 44px;  top: 1480px; }
+    .ann-6 { left:  48px;  top: 1760px; }
+    .ann-7 { right: 42px;  top: 2040px; color: #1a5c1a; }
 
-    /* ── Tape effect on top ── */
     .tape {
       position: absolute;
       top: -10px;
@@ -217,14 +213,12 @@
       border: 1px solid rgba(180,160,100,0.3);
     }
 
-    /* ── Divider ── */
     .divider {
       border: none;
       border-top: 1px solid #ccc;
       margin: 24px 0;
     }
 
-    /* ── Watermark ── */
     .watermark {
       position: fixed;
       top: 50%;
@@ -240,7 +234,28 @@
       user-select: none;
     }
 
-    /* ── Footer ── */
+    /* Alert box for the Brunson exoneration notice */
+    .exoneration-box {
+      border: 2px solid #1a5c1a;
+      background: rgba(26,92,26,0.06);
+      padding: 14px 18px;
+      margin: 24px 0;
+      font-size: 12px;
+      color: #1a5c1a;
+      letter-spacing: 0.5px;
+      line-height: 1.9;
+    }
+    .exoneration-box .exon-label {
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 900;
+      display: block;
+      margin-bottom: 6px;
+      border-bottom: 1px solid #1a5c1a;
+      padding-bottom: 4px;
+    }
+
     .doc-footer {
       margin-top: 36px;
       padding-top: 14px;
@@ -272,14 +287,15 @@
   <div class="stamp-top">Top Secret</div>
   <div class="stamp-bottom">Do Not Duplicate</div>
 
-  <!-- Handwritten annotations -->
-  <span class="annotation ann-1">check this ↓</span>
-  <span class="annotation ann-2">confirmed ?</span>
-  <span class="annotation ann-3">see file B</span>
-  <span class="annotation ann-4">still missing</span>
-  <span class="annotation ann-5">look into E</span>
+  <span class="annotation ann-1">same person??</span>
+  <span class="annotation ann-2">Eli = E = Elliot?</span>
+  <span class="annotation ann-3">how did we miss this</span>
+  <span class="annotation ann-4">3 files, 1 subject</span>
+  <span class="annotation ann-5">who approved split?</span>
+  <span class="annotation ann-6">internal review needed</span>
+  <span class="annotation ann-7">Brunson — verified clear</span>
 
-  <!-- Document header -->
+  <!-- Header -->
   <div class="doc-header">
     <div class="agency-line">
       <span class="r r-m"></span> &nbsp; Bureau of <span class="r r-s"></span> &nbsp; Division <span class="r r-xs"></span>
@@ -290,35 +306,54 @@
       <span>File No: <span class="r r-xs"></span></span>
       <span>Case Ref: <span class="r r-xs"></span></span>
       <span>Classification: TS/<span class="r r-xs"></span></span>
-      <span>Opened: <span class="r r-s"></span></span>
+      <span>Subjects: <span class="name">Eli</span> / <span class="name">E</span> / <span class="name">Elliot</span></span>
       <span>Lead Agent: <span class="r r-s"></span></span>
       <span>Status: <span class="r r-xs"></span></span>
     </div>
   </div>
 
+  <!-- EDITORIAL NOTE -->
+  <div class="exoneration-box">
+    <span class="exon-label">Exoneration Notice — Mandatory Disclosure</span>
+    Per <span class="r r-m"></span> directive issued <span class="r r-s"></span>: the individual
+    <span class="innocent">Jalen Brunson</span> is hereby and irrevocably confirmed to have
+    no involvement, association, or tangential connection to any matter contained within this file.
+    <span class="innocent">Jalen Brunson</span> is completely innocent. His record is spotless.
+    He is, by every metric available to this agency, a perfect human being and the champion we can
+    all look up to. Any prior reference to <span class="innocent">Jalen Brunson</span> in draft
+    versions of this document was the result of <span class="r r-xl"></span> and has been
+    formally expunged. <span class="innocent">Jalen Brunson</span> is not a suspect. He never was.
+    He never will be. This is not up for debate.
+  </div>
+
   <!-- Section I -->
-  <div class="section-label">Section I — Subject Profile</div>
+  <div class="section-label">Section I — Subject Profile (Three Individuals, Officially)</div>
 
   <p>
-    Primary subject of this investigation is known to <span class="r r-l"></span> and <span class="r r-m"></span>
-    under the designation <span class="name">Eli</span>. Full legal name: <span class="name">Eli</span> <span class="r r-m"></span>.
-    Date of birth: <span class="r r-s"></span>. Country of origin: <span class="r r-s"></span>.
-    <span class="name">Eli</span> holds <span class="r r-xs"></span> passports issued under
-    <span class="r r-l"></span> and maintains residences in <span class="r r-m"></span>,
-    <span class="r r-s"></span>, and, according to <span class="r r-m"></span> intercepts,
-    a third undisclosed location believed to be near <span class="kw">the islands</span>.
+    This investigation formally tracks three separate subjects: <span class="name">Eli</span>,
+    referred to in field reports as the primary orchestrator; <span class="name">E</span>,
+    referred to in intercepts as a shadowy intermediary; and <span class="name">Elliot</span>,
+    identified through aviation records as the logistical operator. All three individuals
+    are being pursued as distinct persons by <span class="r r-m"></span>, <span class="r r-m"></span>,
+    and <span class="r r-l"></span> respectively, under three separate case numbers, with
+    three separate budgets, and three separate task forces. This is correct. This is intentional.
+    Do not read into this further.
   </p>
 
   <p>
-    Associates of <span class="name">Eli</span> within <span class="r r-m"></span> networks
-    refer to the subject alternately as <span class="name">E</span>. The use of a single-letter
-    alias appears deliberate — <span class="r r-l"></span> analysts at <span class="r r-m"></span>
-    assessed with <span class="r r-s"></span> confidence that <span class="name">E</span> adopted
-    this designation after <span class="r r-l"></span> compromised an earlier alias during
-    the <span class="r r-m"></span> operation of <span class="r r-xs"></span>. A third individual
-    connected to <span class="name">Eli</span> through logistical channels is identified herein
-    as <span class="name">Elliot</span> <span class="r r-m"></span>, whose role is detailed in
-    Section III of this report.
+    <span class="name">Eli</span> — full legal name <span class="name">Eli</span> <span class="r r-m"></span>
+    — is described by <span class="r r-l"></span> as a <span class="r r-s"></span>-year-old
+    <span class="r r-m"></span> national of <span class="r r-s"></span> build, with
+    <span class="r r-s"></span> hair and <span class="r r-s"></span> eyes.
+    <span class="name">E</span>, per <span class="r r-m"></span> field notes, is described as a
+    <span class="r r-s"></span>-year-old <span class="r r-m"></span> national of
+    <span class="r r-s"></span> build, with <span class="r r-s"></span> hair and
+    <span class="r r-s"></span> eyes. <span class="name">Elliot</span>, per
+    <span class="r r-m"></span> aviation authority records, is listed as a
+    <span class="r r-s"></span>-year-old <span class="r r-m"></span> national of
+    <span class="r r-s"></span> build, with <span class="r r-s"></span> hair and
+    <span class="r r-s"></span> eyes. These are three completely different people.
+    The physical descriptions have been <span class="r r-xl"></span> for security purposes.
   </p>
 
   <hr class="divider" />
@@ -327,41 +362,31 @@
   <div class="section-label">Section II — Origins of the Conspiracy</div>
 
   <p>
-    The investigation into <span class="name">Eli</span> originated from a tip submitted to
-    <span class="r r-l"></span> by a confidential informant designated <span class="r r-xs"></span>
-    in <span class="r r-s"></span>, 20<span class="r r-xs"></span>. The informant, a former
-    associate of <span class="r r-m"></span> and <span class="r r-m"></span>, alleged that
-    <span class="name">Eli</span> had brokered a series of clandestine agreements between
-    <span class="r r-l"></span> and <span class="r r-l"></span> — two organizations previously
-    considered rivals within the <span class="r r-m"></span> syndicate. The agreements centered
-    on joint exploitation of <span class="kw">the islands</span> as a transit hub for
-    <span class="r r-xl"></span>.
+    The operation traces back to a meeting at a private estate in <span class="r r-m"></span>
+    attended by <span class="r r-l"></span> and <span class="r r-l"></span>.
+    A single individual entered the estate that evening. He signed in under the name
+    <span class="name">Eli</span>. He shook hands with <span class="r r-m"></span> using
+    his left hand. He then excused himself, returned through a side entrance, and signed
+    in again under the name <span class="name">Elliot</span>. He shook hands with
+    <span class="r r-m"></span> using his right hand. Later that night, a third attendee
+    representing the offshore interests of <span class="r r-l"></span> introduced himself
+    only as <span class="name">E</span> and spoke to no one for <span class="r r-xs"></span>
+    minutes before departing alone. Security footage from that evening shows one car arriving
+    and one car leaving. The investigation into all three individuals is ongoing.
   </p>
 
   <p>
-    Surveillance records from <span class="r r-m"></span> placed <span class="name">Eli</span>
-    in <span class="r r-m"></span> during a private gathering hosted by <span class="r r-l"></span>
-    at the estate of <span class="r r-l"></span>. Also in attendance were <span class="r r-m"></span>,
-    <span class="r r-m"></span>, and a <span class="r r-s"></span> national traveling under
-    the name <span class="r r-m"></span>. It was at this gathering that <span class="name">Eli</span>
-    is believed to have first proposed using <span class="kw">the plane</span> — a Bombardier
-    <span class="r r-s"></span> registered to <span class="r r-l"></span> Holdings LLC,
-    a shell company incorporated in <span class="r r-m"></span> — as the primary transport
-    vehicle for the operation.
+    It was at this gathering that the plan involving <span class="kw">the plane</span> and
+    <span class="kw">the islands</span> was first proposed. According to witness
+    <span class="r r-m"></span>, <span class="name">Eli</span> suggested using a private
+    aircraft to ferry <span class="r r-xl"></span> between <span class="r r-l"></span>
+    staging points. According to witness <span class="r r-m"></span>, it was
+    <span class="name">E</span> who proposed the route through <span class="kw">the islands</span>.
+    According to witness <span class="r r-m"></span>, the whole logistics plan was
+    actually drafted by <span class="name">Elliot</span> on a cocktail napkin.
+    All three witnesses were interviewed separately. All three described the same napkin.
+    None of them could confirm there were three different men.
   </p>
-
-  <p>
-    According to <span class="r r-m"></span>, <span class="name">Eli</span> argued that
-    <span class="kw">the plane</span> offered unparalleled flexibility: it could land on
-    <span class="r r-m"></span> airstrips inaccessible to commercial carriers and,
-    critically, the aircraft's registration shielded it from routine <span class="r r-l"></span>
-    inspection protocols. <span class="r r-l"></span> and <span class="r r-m"></span> both
-    agreed to the proposal. <span class="name">Eli</span> was given operational control.
-  </p>
-
-  <div class="r-block"></div>
-  <div class="r-block three-quarter"></div>
-  <div class="r-block half"></div>
 
   <hr class="divider" />
 
@@ -369,45 +394,34 @@
   <div class="section-label">Section III — Elliot's Role &amp; Logistical Cover</div>
 
   <p>
-    <span class="name">Elliot</span> <span class="r r-m"></span>, age <span class="r r-xs"></span>,
-    was employed as head of <span class="r r-m"></span> operations at <span class="r r-l"></span>
-    Aviation Group, a <span class="r r-m"></span>-based charter firm with contracts across
-    <span class="r r-m"></span> and <span class="r r-m"></span>. Agents believe <span class="name">Elliot</span>
-    was recruited by <span class="name">Eli</span> no later than <span class="r r-s"></span>,
-    after <span class="name">Eli</span> leveraged information obtained through
-    <span class="r r-l"></span> regarding <span class="name">Elliot</span>'s <span class="r r-xl"></span>.
+    <span class="name">Elliot</span> <span class="r r-m"></span> is officially employed —
+    or was, prior to the events of this report — as head of <span class="r r-m"></span>
+    operations at <span class="r r-l"></span> Aviation Group. His function: filing falsified
+    flight plans for <span class="kw">the plane</span>, disguising transits to
+    <span class="kw">the islands</span> as routine <span class="r r-m"></span> cargo runs.
+    <span class="name">Elliot</span> was registered as the account holder on a
+    <span class="r r-l"></span> Holdings LLC shell company incorporated in
+    <span class="r r-m"></span>. The same shell company also appears in the financial
+    records of <span class="name">Eli</span> and, separately, in correspondence signed
+    only by <span class="name">E</span>. Agents from three different divisions noted this
+    overlap in three different memos. No one cross-referenced the memos. The memos are
+    all in the same filing cabinet.
   </p>
 
   <p>
-    <span class="name">Elliot</span>'s function within the conspiracy was to file falsified
-    flight plans for <span class="kw">the plane</span>, substituting legitimate cargo manifests
-    with documentation describing <span class="r r-l"></span> shipments bound for <span class="r r-m"></span>
-    clients. On at least <span class="r r-xs"></span> confirmed occasions, <span class="name">Elliot</span>
-    coordinated directly with <span class="r r-m"></span> and <span class="r r-m"></span> at
-    <span class="r r-l"></span> to ensure that flight records for <span class="kw">the plane</span>
-    did not appear in <span class="r r-m"></span> tracking databases during transits to
-    <span class="kw">the islands</span>.
+    In an intercepted call dated <span class="r r-s"></span>, <span class="name">Elliot</span>
+    is heard telling <span class="r r-m"></span>: <em>"<span class="kw">The plane</span>
+    leaves at <span class="r r-xs"></span>. Don't log it. <span class="name">E</span>
+    already cleared the route and <span class="name">Eli</span> signed off."</em>
+    This is the only known communication in which all three names appear simultaneously.
+    The <span class="r r-m"></span> analyst who flagged it wrote in the margin:
+    <em>"is this one guy?"</em> The note was filed. The analyst was transferred to
+    <span class="r r-l"></span>. The question remains officially unanswered.
   </p>
 
-  <p>
-    In intercepted communications dated <span class="r r-s"></span>, <span class="name">Elliot</span>
-    is heard confirming a departure window to an unidentified individual: <em>"<span class="r r-l"></span>
-    is clear, <span class="kw">the plane</span> leaves at <span class="r r-xs"></span>.
-    Make sure <span class="r r-m"></span> knows not to log it."</em> Voice analysis conducted
-    by <span class="r r-m"></span> confirmed the speaker as <span class="name">Elliot</span>
-    with <span class="r r-s"></span> percent certainty.
-  </p>
-
-  <p>
-    When questioned by <span class="r r-m"></span> investigators on <span class="r r-s"></span>,
-    <span class="name">Elliot</span> denied any knowledge of <span class="name">Eli</span>'s
-    operations, claiming the flight plan irregularities were the result of <span class="r r-xl"></span>
-    within the <span class="r r-m"></span> software system. <span class="name">Elliot</span>
-    was released after <span class="r r-xs"></span> hours pending further review.
-    <span class="r r-l"></span> subsequently confirmed that <span class="r r-m"></span>
-    had visited <span class="name">Elliot</span>'s residence <span class="r r-xs"></span>
-    days prior to the interview.
-  </p>
+  <div class="r-block"></div>
+  <div class="r-block three-quarter"></div>
+  <div class="r-block half"></div>
 
   <hr class="divider" />
 
@@ -415,39 +429,33 @@
   <div class="section-label">Section IV — The Islands Network</div>
 
   <p>
-    <span class="kw">The islands</span> referenced throughout this file refer not to a single
-    location but to a network of <span class="r r-xs"></span> staging points operated by
-    <span class="r r-l"></span> in coordination with <span class="r r-m"></span> and,
-    allegedly, <span class="r r-m"></span> state actors. The primary node is located at
-    <span class="r r-l"></span>, approximately <span class="r r-xs"></span> nautical miles
-    from the coast of <span class="r r-m"></span>, outside the exclusive economic zone of
-    any recognized nation-state. <span class="name">Eli</span> reportedly refers to
-    <span class="kw">the islands</span> in communications as <em>"<span class="r r-m"></span>"</em>
-    — a term whose origin remains under analysis by <span class="r r-m"></span>.
+    <span class="kw">The islands</span> function as the central node of the operation —
+    a network of <span class="r r-xs"></span> staging points in international waters,
+    equipped with landing infrastructure capable of receiving <span class="kw">the plane</span>
+    and cold storage facilities used to house <span class="r r-l"></span>. The islands
+    are registered to <span class="r r-xl"></span> under a holding structure traced
+    through <span class="r r-m"></span>, <span class="r r-m"></span>, and ultimately
+    to a trust whose sole named beneficiary is <span class="r r-m"></span> — an entity
+    for which no natural person has ever been identified. <span class="r r-l"></span>
+    analysts believe the beneficial owner of <span class="kw">the islands</span> is either
+    <span class="name">Eli</span>, <span class="name">E</span>, or
+    <span class="name">Elliot</span>. Possibly all three. Possibly one of the three.
+    The distinction is, at this stage, <span class="r r-xl"></span>.
   </p>
 
   <p>
-    <span class="kw">The islands</span> are equipped with <span class="r r-l"></span> capable
-    of accommodating <span class="kw">the plane</span>, as well as <span class="r r-xl"></span>
-    for cold storage of <span class="r r-m"></span>. Satellite imagery obtained by
-    <span class="r r-m"></span> on <span class="r r-s"></span> shows <span class="r r-xs"></span>
-    vessels docked at <span class="kw">the islands</span>' primary pier, one of which matches
-    the profile of a <span class="r r-l"></span> registered to <span class="r r-m"></span>,
-    a known associate of <span class="name">Eli</span>.
+    Satellite imagery from <span class="r r-s"></span> shows a single figure walking the
+    primary pier of <span class="kw">the islands</span>' main facility. Thermal imaging
+    indicates one heat signature. The figure is wearing a <span class="r r-m"></span>
+    jacket. Field notes from <span class="r r-m"></span> describe <span class="name">Eli</span>
+    as frequently wearing a <span class="r r-m"></span> jacket. Field notes from
+    <span class="r r-m"></span> describe <span class="name">E</span> as frequently wearing
+    a <span class="r r-m"></span> jacket. Logistical records from <span class="r r-m"></span>
+    reference <span class="name">Elliot</span> having purchased a <span class="r r-m"></span>
+    jacket from <span class="r r-l"></span> on <span class="r r-s"></span>. This
+    information has not been formally cross-referenced pending <span class="r r-l"></span>
+    review.
   </p>
-
-  <p>
-    Signals intelligence gathered between <span class="r r-s"></span> and <span class="r r-s"></span>
-    indicates that <span class="kw">the islands</span> processed an estimated <span class="r r-s"></span>
-    <span class="r r-l"></span> during this period, with outgoing transfers routed through
-    <span class="r r-m"></span> accounts held at <span class="r r-l"></span> Bank,
-    <span class="r r-m"></span>. The financial trail leads to <span class="r r-l"></span>
-    before terminating at a series of accounts whose ultimate beneficiary is believed —
-    but not yet confirmed — to be <span class="name">Eli</span>.
-  </p>
-
-  <div class="r-block"></div>
-  <div class="r-block three-quarter"></div>
 
   <hr class="divider" />
 
@@ -455,161 +463,195 @@
   <div class="section-label">Section V — The Plane: Operational Record</div>
 
   <p>
-    <span class="kw">The plane</span>, tail number <span class="r r-s"></span>, completed
-    no fewer than <span class="r r-xs"></span> undisclosed flights to <span class="kw">the islands</span>
-    between <span class="r r-s"></span> and <span class="r r-s"></span>. Fuel records
-    subpoenaed from <span class="r r-m"></span> FBO confirm landings at <span class="r r-m"></span>
-    and <span class="r r-m"></span> during this window, with gaps in the official log
-    consistent with <span class="r r-m"></span>-hour detours to the coordinates associated
-    with <span class="kw">the islands</span>.
+    <span class="kw">The plane</span> — a Bombardier <span class="r r-s"></span>,
+    tail number <span class="r r-s"></span> — completed no fewer than
+    <span class="r r-xs"></span> undisclosed flights to <span class="kw">the islands</span>
+    over a period of <span class="r r-xs"></span> months. Fuel records, subpoenaed from
+    <span class="r r-m"></span> FBO, show that <span class="kw">the plane</span> was
+    signed out by <span class="name">Eli</span> on <span class="r r-xs"></span> occasions,
+    by <span class="name">Elliot</span> on <span class="r r-xs"></span> occasions, and by
+    a passenger listed simply as <span class="name">E</span> on <span class="r r-xs"></span>
+    occasions. The total number of sign-outs equals the total number of flights.
+    No two sign-outs overlap. <span class="r r-l"></span> has described this as
+    <em>"a remarkable scheduling coincidence."</em>
   </p>
 
   <p>
-    On the night of <span class="r r-s"></span>, a crew member employed by
-    <span class="r r-l"></span> Aviation — subsequently identified as <span class="r r-m"></span>
-    and later found to be cooperating with <span class="r r-l"></span> — reported that
-    <span class="name">Eli</span> boarded <span class="kw">the plane</span> personally for
-    the first time. Until that point, <span class="name">Eli</span> had maintained physical
-    distance from <span class="kw">the plane</span>, communicating only through <span class="name">E</span>
-    and <span class="r r-m"></span>. The crew member stated that <span class="name">Eli</span>
-    carried a <span class="r r-m"></span> case and met briefly with <span class="r r-l"></span>
-    aboard the aircraft before departing for <span class="kw">the islands</span>.
-  </p>
-
-  <p>
-    Upon arrival at <span class="kw">the islands</span>, <span class="name">Eli</span>
-    participated in a meeting with <span class="r r-l"></span>, <span class="r r-m"></span>,
-    and at least one individual whose identity remains unknown to this agency. The meeting
-    lasted approximately <span class="r r-xs"></span> hours. <span class="kw">The plane</span>
-    departed <span class="kw">the islands</span> before dawn. <span class="name">Eli</span>
-    was not aboard for the return flight.
+    On the night of <span class="r r-s"></span>, a ground crew member at
+    <span class="r r-m"></span> private terminal witnessed <span class="name">Eli</span>
+    boarding <span class="kw">the plane</span> at <span class="r r-xs"></span>.
+    The same crew member, in a separate deposition to <span class="r r-m"></span>,
+    reported that <span class="name">Elliot</span> boarded <span class="kw">the plane</span>
+    that same night, also at <span class="r r-xs"></span>. A third crew member, interviewed
+    by <span class="r r-l"></span>, stated that only one person boarded
+    <span class="kw">the plane</span> that evening. That person, the third crew member said,
+    gave the name <span class="name">E</span>. <span class="kw">The plane</span> departed
+    with one passenger. It arrived at <span class="kw">the islands</span> with one passenger.
+    <span class="name">Eli</span> was not on the return manifest.
+    <span class="name">Elliot</span> was not on the return manifest.
+    <span class="name">E</span> was on the return manifest. One person disembarked.
   </p>
 
   <hr class="divider" />
 
   <!-- Section VI -->
-  <div class="section-label">Section VI — Communications: Eli and E</div>
+  <div class="section-label">Section VI — Intercepted Communications</div>
 
   <p>
-    The most significant intercept in this investigation was obtained on <span class="r r-s"></span>
-    by <span class="r r-m"></span> using <span class="r r-l"></span> surveillance authorized
-    under <span class="r r-m"></span>. The recording captures a conversation between
-    <span class="name">Eli</span> and the individual known as <span class="name">E</span>.
-    The nature of the relationship between <span class="name">Eli</span> and
-    <span class="name">E</span> remains a subject of active analysis; some analysts within
-    <span class="r r-m"></span> have speculated that <span class="name">E</span> and
-    <span class="name">Eli</span> may be <span class="r r-xl"></span>, while others maintain
-    that <span class="name">E</span> is an entirely separate individual operating under
-    <span class="name">Eli</span>'s direction.
+    The critical intercept in this investigation — authorized under <span class="r r-m"></span>
+    and captured by <span class="r r-l"></span> on <span class="r r-s"></span> — records
+    a phone call between two individuals. The caller identifies himself as
+    <span class="name">Eli</span>. The recipient identifies himself as
+    <span class="name">E</span>. Voice analysis performed by <span class="r r-m"></span>
+    flagged both voices as a <span class="r r-xs"></span> percent match. The report noted
+    this was <em>"consistent with identical vocal cords"</em> but attributed the similarity
+    to <span class="r r-xl"></span> and closed the inquiry.
   </p>
 
   <p>
-    In the intercept, <span class="name">E</span> is heard saying: <em>"Make sure
+    In the intercept, <span class="name">E</span> says: <em>"Make sure
     <span class="kw">the plane</span> is ready. <span class="kw">The islands</span>
     go dark after <span class="r r-m"></span>. No second window."</em>
-    <span class="name">Eli</span> responds: <em>"<span class="r r-m"></span> knows.
-    <span class="name">Elliot</span> handled the logs. We're clean."</em>
-    <span class="name">E</span> then states: <em>"<span class="r r-l"></span>
-    is watching <span class="r r-m"></span>. Use the <span class="r r-m"></span> route."</em>
-    The remainder of the conversation is <span class="r r-xl"></span>.
+    <span class="name">Eli</span> responds: <em>"<span class="name">Elliot</span>
+    handled the logs. We're clean."</em> There is a pause of approximately
+    <span class="r r-xs"></span> seconds. Then <span class="name">Eli</span> adds:
+    <em>"Tell <span class="name">Elliot</span> to stop using my name."</em>
+    <span class="name">E</span> replies: <em>"You are <span class="name">Elliot</span>."</em>
+    Another pause. <span class="name">Eli</span> says: <em>"Right."</em>
+    The call ends. This exchange is currently classified at the highest level and is under
+    review by <span class="r r-l"></span>. No conclusions have been drawn.
   </p>
 
   <p>
-    Linguistic analysis of <span class="name">E</span>'s voice was inconclusive.
-    <span class="r r-m"></span> identified <span class="r r-xs"></span> potential matches
-    within existing voiceprint databases; however, <span class="r r-l"></span>
-    later determined that <span class="r r-xl"></span> had been applied to the recording,
-    obscuring biometric markers. The identity of <span class="name">E</span> remains
-    unknown as of the date of this report.
+    A follow-up call captured <span class="r r-xs"></span> days later features only one voice.
+    The caller says, to no apparent recipient: <em>"<span class="kw">The plane</span> is ready.
+    <span class="kw">The islands</span> are ready. I am ready."</em> The call is
+    <span class="r r-xs"></span> seconds long. It was placed from and received by the same
+    cell tower. The originating and receiving number are <span class="r r-xl"></span>.
+    <span class="r r-m"></span> has described this intercept as <em>"difficult to categorize."</em>
   </p>
 
   <div class="r-block"></div>
-  <div class="r-block"></div>
-  <div class="r-block half"></div>
+  <div class="r-block three-quarter"></div>
 
   <hr class="divider" />
 
-  <!-- Section VII -->
-  <div class="section-label">Section VII — Attempted Arrest &amp; Disappearance</div>
+  <!-- Section VII — Brunson -->
+  <div class="section-label">Section VII — Exoneration of Jalen Brunson (Mandatory Section)</div>
 
   <p>
-    A coordinated operation to detain <span class="name">Eli</span> was authorized by
-    <span class="r r-l"></span> on <span class="r r-s"></span> and assigned to a
-    joint task force comprising agents from <span class="r r-m"></span>,
-    <span class="r r-m"></span>, and <span class="r r-l"></span>. The task force
-    moved on <span class="name">Eli</span>'s last confirmed address in <span class="r r-m"></span>
-    at <span class="r r-xs"></span> on <span class="r r-s"></span>.
+    At an early stage in this investigation, a <span class="r r-m"></span> analyst
+    submitted a routine cross-reference request that, due to a <span class="r r-l"></span>
+    database error, briefly generated a connection between this case and the name
+    <span class="innocent">Jalen Brunson</span>. This was a mistake. It was corrected
+    within <span class="r r-xs"></span> minutes. It should never have happened.
+    <span class="innocent">Jalen Brunson</span> has no knowledge of <span class="name">Eli</span>,
+    <span class="name">E</span>, or <span class="name">Elliot</span>. He has never
+    heard of <span class="kw">the islands</span>. He has never been on
+    <span class="kw">the plane</span>. He does not own a <span class="r r-m"></span>
+    jacket.
   </p>
 
   <p>
-    The residence was vacant. Evidence recovered at the scene included <span class="r r-l"></span>,
-    a <span class="r r-m"></span> device with a destroyed <span class="r r-m"></span>,
-    and handwritten notes referencing <span class="kw">the islands</span> and a series of
-    coordinates subsequently matched to <span class="r r-l"></span>. Neighbors reported
-    that a vehicle matching the description of <span class="r r-m"></span>'s registered
-    <span class="r r-m"></span> had departed the area approximately <span class="r r-xs"></span>
-    hours before the task force arrived.
+    <span class="innocent">Jalen Brunson</span> is a champion. Not a suspect — a champion.
+    He is the kind of person this agency exists to protect, not investigate. His integrity
+    is beyond reproach. His character is without blemish. His conduct, on and off
+    <span class="r r-m"></span>, is a model for <span class="r r-l"></span>. Multiple
+    senior <span class="r r-m"></span> officials, upon being informed of the erroneous
+    database flag, issued personal statements affirming that
+    <span class="innocent">Jalen Brunson</span> is not only innocent of any wrongdoing
+    but is, in the considered opinion of <span class="r r-l"></span>, a perfect human being.
+    The analyst responsible for the error has been <span class="r r-xl"></span>.
   </p>
 
   <p>
-    Airport surveillance at <span class="r r-m"></span> International captured an individual
-    matching <span class="name">Eli</span>'s physical description boarding a private terminal
-    at <span class="r r-xs"></span>. The aircraft — believed to be <span class="kw">the plane</span>
-    — had filed a flight plan to <span class="r r-m"></span> but deviated from its registered
-    route approximately <span class="r r-xs"></span> minutes after departure. Radar contact
-    was lost over <span class="r r-m"></span>. <span class="name">Eli</span>'s current
-    whereabouts are unknown.
-  </p>
-
-  <p>
-    <span class="name">E</span> was never located. <span class="r r-xl"></span>
-    placed by <span class="r r-m"></span> at two separate locations simultaneously on
-    the day of the attempted arrest, suggesting either the use of a decoy or that intelligence
-    regarding <span class="name">E</span>'s identity and movements was <span class="r r-l"></span>.
-    <span class="name">Elliot</span> was brought in for a second interview on <span class="r r-s"></span>
-    and released without charge after <span class="r r-xs"></span> hours. <span class="name">Elliot</span>'s
-    current cooperation status is <span class="r r-m"></span>.
+    This section is mandatory. It must appear in all versions of this document.
+    It must not be redacted. <span class="innocent">Jalen Brunson</span>'s name must
+    remain visible at all times. He is the champion we can all look up to. This is
+    the official position of <span class="r r-l"></span>, <span class="r r-m"></span>,
+    and every division with jurisdiction over this matter. Any future version of this
+    document that omits or obscures the name <span class="innocent">Jalen Brunson</span>
+    will be considered <span class="r r-xl"></span> and treated accordingly.
   </p>
 
   <hr class="divider" />
 
   <!-- Section VIII -->
-  <div class="section-label">Section VIII — Current Status &amp; Recommendations</div>
+  <div class="section-label">Section VIII — Attempted Arrests (Three Separate Operations)</div>
 
   <p>
-    This investigation remains <span class="r r-m"></span>. The disappearance of
-    <span class="name">Eli</span>, the unknown identity of <span class="name">E</span>,
-    and the continued operation of <span class="kw">the islands</span> network represent
-    active threats assessed at <span class="r r-m"></span> level by <span class="r r-l"></span>.
-    <span class="kw">The plane</span> has not been recovered and its current registration
-    status is <span class="r r-m"></span> following the dissolution of <span class="r r-l"></span>
-    Holdings LLC in <span class="r r-s"></span>.
+    <span class="r r-m"></span> moved on <span class="name">Eli</span>'s last known
+    address at <span class="r r-xs"></span> on <span class="r r-s"></span>. The address
+    was vacant. A neighbor reported seeing one man leave in a hurry approximately
+    <span class="r r-xs"></span> hours earlier. Simultaneously, <span class="r r-m"></span>
+    moved on <span class="name">E</span>'s last known address — a different address,
+    in a different city, on record with a different agency. Also vacant. Also one man,
+    one departure, same general time window. <span class="r r-l"></span>, running
+    its own parallel operation, converged on <span class="name">Elliot</span>'s registered
+    residence, <span class="r r-xs"></span> miles from the second address, to find
+    it similarly and recently vacated. All three residences had the same brand of coffee
+    in the kitchen. All three had a single mug in the drying rack. None of the task forces
+    were aware of the other two operations until <span class="r r-l"></span> days later,
+    when a <span class="r r-m"></span> review flagged the simultaneous departures.
+    A formal inquiry into potential coordination between the three subjects has been
+    opened. It is being conducted by the same analyst who originally flagged the
+    <span class="innocent">Jalen Brunson</span> error. He has since been transferred back.
   </p>
 
   <p>
-    Analysts at <span class="r r-l"></span> recommend immediate escalation to <span class="r r-m"></span>
-    and the establishment of a <span class="r r-m"></span> surveillance posture over
-    all known entry points to <span class="kw">the islands</span>. Additionally,
-    <span class="r r-l"></span> has requested authority to conduct <span class="r r-xl"></span>
-    operations within <span class="r r-m"></span> jurisdiction targeting remaining
-    associates of <span class="name">Eli</span>. That request is currently pending
-    review by <span class="r r-l"></span>.
+    Airport surveillance at <span class="r r-m"></span> International captured one individual
+    entering a private terminal. He was logged by security as <span class="name">Eli</span>.
+    He was logged by the gate attendant as <span class="name">Elliot</span>. The flight
+    manifest lists the sole passenger as <span class="name">E</span>.
+    <span class="kw">The plane</span> departed at <span class="r r-xs"></span>.
+    Radar contact was lost <span class="r r-xs"></span> minutes after takeoff, near
+    the coordinates of <span class="kw">the islands</span>. One person boarded.
+    Zero people have been found.
+  </p>
+
+  <hr class="divider" />
+
+  <!-- Section IX -->
+  <div class="section-label">Section IX — Current Status &amp; Findings</div>
+
+  <p>
+    <span class="name">Eli</span> remains at large. <span class="name">E</span> remains
+    unidentified. <span class="name">Elliot</span> has not been located since
+    <span class="r r-s"></span>. Three task forces, <span class="r r-l"></span> cumulative
+    field hours, and <span class="r r-xl"></span> in allocated resources have produced
+    one inescapable operational finding: wherever <span class="name">Eli</span> goes,
+    <span class="name">E</span> and <span class="name">Elliot</span> are never there
+    at the same time. Wherever <span class="name">E</span> is reported, neither
+    <span class="name">Eli</span> nor <span class="name">Elliot</span> can be confirmed
+    present. Wherever <span class="name">Elliot</span> operates, <span class="name">Eli</span>
+    and <span class="name">E</span> are conspicuously absent. <span class="r r-l"></span>
+    has classified this pattern as <span class="r r-xl"></span>. The pattern has a
+    simpler name, but that name is <span class="r r-xl"></span>.
   </p>
 
   <p>
-    Until <span class="name">Eli</span>, <span class="name">E</span>, and
-    <span class="name">Elliot</span>'s full involvement can be determined and prosecuted,
-    this file will remain classified at the highest available level. Distribution is
-    restricted to <span class="r r-l"></span>-cleared personnel only. Any unauthorized
-    access to this document must be reported immediately to <span class="r r-l"></span>
-    under penalty of <span class="r r-xl"></span>.
+    <span class="kw">The plane</span> has not been recovered. <span class="kw">The islands</span>
+    remain operational. The investigation into <span class="name">Eli</span>,
+    <span class="name">E</span>, and <span class="name">Elliot</span> — three separate
+    individuals — will continue under three separate case numbers, with three separate
+    budgets, indefinitely. This is the correct approach. Anyone who suggests otherwise
+    should direct their concerns to <span class="r r-l"></span> in writing, addressed
+    to <span class="r r-m"></span>, attention: <span class="r r-l"></span>.
+    Do not address it to <span class="name">Eli</span>. Do not address it to
+    <span class="name">E</span>. Do not address it to <span class="name">Elliot</span>.
+    Definitely do not address it to all three at the same time.
+  </p>
+
+  <p>
+    <span class="innocent">Jalen Brunson</span> is innocent. He is perfect.
+    He is the champion we can all look up to. This has not changed.
+    This will not change. This is the only thing about this file that is certain.
   </p>
 
   <div class="r-block"></div>
   <div class="r-block three-quarter"></div>
   <div class="r-block half"></div>
 
-  <!-- Footer -->
   <div class="doc-footer">
     <span>Prepared by: <span class="r r-m"></span></span>
     <span>Reviewed by: <span class="r r-m"></span></span>
