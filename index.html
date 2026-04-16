@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELI FILES — CLASSIFIED</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px 80px;
+      font-family: 'Courier New', Courier, monospace;
+      min-height: 100vh;
+    }
+
+    /* ── Page shell ── */
+    .page {
+      background: #f5f0e8;
+      width: 100%;
+      max-width: 860px;
+      padding: 60px 70px;
+      position: relative;
+      box-shadow:
+        0 0 0 1px #c8b89a,
+        6px 6px 30px rgba(0,0,0,0.7),
+        0 0 80px rgba(0,0,0,0.4);
+      /* paper aging */
+      background-image:
+        radial-gradient(ellipse at 20% 10%, rgba(180,140,80,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 90%, rgba(160,120,60,0.10) 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    /* ── TOP SECRET stamp ── */
+    .stamp-top {
+      position: absolute;
+      top: 18px;
+      right: 28px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #8b0000;
+      border: 3px solid #8b0000;
+      padding: 3px 10px;
+      transform: rotate(3deg);
+      opacity: 0.85;
+      text-transform: uppercase;
+      font-family: 'Courier New', monospace;
+    }
+
+    .stamp-bottom {
+      position: absolute;
+      bottom: 22px;
+      left: 42px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #8b0000;
+      border: 3px solid #8b0000;
+      padding: 3px 10px;
+      transform: rotate(-2deg);
+      opacity: 0.70;
+      text-transform: uppercase;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ── Document header ── */
+    .doc-header {
+      border-bottom: 2px solid #333;
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+    }
+
+    .agency-line {
+      font-size: 9px;
+      letter-spacing: 4px;
+      color: #444;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .headline {
+      text-align: center;
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: 18px;
+      color: #111;
+      text-transform: uppercase;
+      font-family: 'Special Elite', 'Courier New', serif;
+      text-shadow: 2px 2px 0px rgba(0,0,0,0.12);
+      margin-bottom: 4px;
+    }
+
+    .sub-headline {
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 6px;
+      color: #555;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 4px 16px;
+      margin-top: 14px;
+      font-size: 9px;
+      color: #444;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .meta-grid span { display: block; border-bottom: 1px dotted #aaa; padding-bottom: 2px; }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 9px;
+      letter-spacing: 4px;
+      color: #666;
+      text-transform: uppercase;
+      margin: 28px 0 8px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid #bbb;
+    }
+
+    /* ── Body text ── */
+    p {
+      font-size: 13.5px;
+      line-height: 2.1;
+      color: #222;
+      text-align: justify;
+      margin-bottom: 18px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── Redaction bar ── */
+    .r {
+      display: inline-block;
+      background: #111;
+      color: transparent;
+      user-select: none;
+      border-radius: 1px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+      /* slight gloss */
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 1px 2px rgba(0,0,0,0.5);
+    }
+
+    /* width variants */
+    .r-xs  { width: 44px;  height: 13px; }
+    .r-s   { width: 72px;  height: 13px; }
+    .r-m   { width: 110px; height: 13px; }
+    .r-l   { width: 160px; height: 13px; }
+    .r-xl  { width: 210px; height: 13px; }
+    .r-xxl { width: 280px; height: 13px; }
+
+    /* block-level redaction (full-line) */
+    .r-block {
+      display: block;
+      background: #111;
+      height: 14px;
+      margin: 6px 0;
+      border-radius: 1px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .r-block.half { width: 55%; }
+    .r-block.three-quarter { width: 78%; }
+
+    /* ── Visible suspect names ── */
+    .name {
+      font-weight: 700;
+      color: #111;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Key phrase (islands / plane) ── */
+    .kw {
+      font-style: italic;
+      font-weight: 600;
+      color: #111;
+    }
+
+    /* ── Handwritten annotation ── */
+    .annotation {
+      font-family: 'Special Elite', cursive;
+      font-size: 13px;
+      color: #1a3a6b;
+      position: absolute;
+      transform: rotate(-3deg);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+    .ann-1 { right: 55px; top: 310px; }
+    .ann-2 { left:  48px; top: 580px; }
+    .ann-3 { right: 42px; top: 860px; }
+    .ann-4 { left:  50px; top: 1140px; }
+    .ann-5 { right: 44px; top: 1420px; }
+
+    /* ── Tape effect on top ── */
+    .tape {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      width: 90px;
+      height: 22px;
+      background: rgba(210,195,155,0.55);
+      border: 1px solid rgba(180,160,100,0.3);
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 24px 0;
+    }
+
+    /* ── Watermark ── */
+    .watermark {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-35deg);
+      font-size: 110px;
+      font-weight: 900;
+      letter-spacing: 12px;
+      color: rgba(139,0,0,0.05);
+      pointer-events: none;
+      white-space: nowrap;
+      font-family: 'Courier New', monospace;
+      user-select: none;
+    }
+
+    /* ── Footer ── */
+    .doc-footer {
+      margin-top: 36px;
+      padding-top: 14px;
+      border-top: 2px solid #333;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      color: #555;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .page-num {
+      text-align: center;
+      font-size: 9px;
+      color: #777;
+      letter-spacing: 3px;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<div class="watermark">CLASSIFIED</div>
+
+<div class="page">
+  <div class="tape"></div>
+  <div class="stamp-top">Top Secret</div>
+  <div class="stamp-bottom">Do Not Duplicate</div>
+
+  <!-- Handwritten annotations -->
+  <span class="annotation ann-1">check this ↓</span>
+  <span class="annotation ann-2">confirmed ?</span>
+  <span class="annotation ann-3">see file B</span>
+  <span class="annotation ann-4">still missing</span>
+  <span class="annotation ann-5">look into E</span>
+
+  <!-- Document header -->
+  <div class="doc-header">
+    <div class="agency-line">
+      <span class="r r-m"></span> &nbsp; Bureau of <span class="r r-s"></span> &nbsp; Division <span class="r r-xs"></span>
+    </div>
+    <div class="headline">Eli&nbsp;Files</div>
+    <div class="sub-headline">Classified Investigative Report &mdash; Internal Use Only</div>
+    <div class="meta-grid">
+      <span>File No: <span class="r r-xs"></span></span>
+      <span>Case Ref: <span class="r r-xs"></span></span>
+      <span>Classification: TS/<span class="r r-xs"></span></span>
+      <span>Opened: <span class="r r-s"></span></span>
+      <span>Lead Agent: <span class="r r-s"></span></span>
+      <span>Status: <span class="r r-xs"></span></span>
+    </div>
+  </div>
+
+  <!-- Section I -->
+  <div class="section-label">Section I — Subject Profile</div>
+
+  <p>
+    Primary subject of this investigation is known to <span class="r r-l"></span> and <span class="r r-m"></span>
+    under the designation <span class="name">Eli</span>. Full legal name: <span class="name">Eli</span> <span class="r r-m"></span>.
+    Date of birth: <span class="r r-s"></span>. Country of origin: <span class="r r-s"></span>.
+    <span class="name">Eli</span> holds <span class="r r-xs"></span> passports issued under
+    <span class="r r-l"></span> and maintains residences in <span class="r r-m"></span>,
+    <span class="r r-s"></span>, and, according to <span class="r r-m"></span> intercepts,
+    a third undisclosed location believed to be near <span class="kw">the islands</span>.
+  </p>
+
+  <p>
+    Associates of <span class="name">Eli</span> within <span class="r r-m"></span> networks
+    refer to the subject alternately as <span class="name">E</span>. The use of a single-letter
+    alias appears deliberate — <span class="r r-l"></span> analysts at <span class="r r-m"></span>
+    assessed with <span class="r r-s"></span> confidence that <span class="name">E</span> adopted
+    this designation after <span class="r r-l"></span> compromised an earlier alias during
+    the <span class="r r-m"></span> operation of <span class="r r-xs"></span>. A third individual
+    connected to <span class="name">Eli</span> through logistical channels is identified herein
+    as <span class="name">Elliot</span> <span class="r r-m"></span>, whose role is detailed in
+    Section III of this report.
+  </p>
+
+  <hr class="divider" />
+
+  <!-- Section II -->
+  <div class="section-label">Section II — Origins of the Conspiracy</div>
+
+  <p>
+    The investigation into <span class="name">Eli</span> originated from a tip submitted to
+    <span class="r r-l"></span> by a confidential informant designated <span class="r r-xs"></span>
+    in <span class="r r-s"></span>, 20<span class="r r-xs"></span>. The informant, a former
+    associate of <span class="r r-m"></span> and <span class="r r-m"></span>, alleged that
+    <span class="name">Eli</span> had brokered a series of clandestine agreements between
+    <span class="r r-l"></span> and <span class="r r-l"></span> — two organizations previously
+    considered rivals within the <span class="r r-m"></span> syndicate. The agreements centered
+    on joint exploitation of <span class="kw">the islands</span> as a transit hub for
+    <span class="r r-xl"></span>.
+  </p>
+
+  <p>
+    Surveillance records from <span class="r r-m"></span> placed <span class="name">Eli</span>
+    in <span class="r r-m"></span> during a private gathering hosted by <span class="r r-l"></span>
+    at the estate of <span class="r r-l"></span>. Also in attendance were <span class="r r-m"></span>,
+    <span class="r r-m"></span>, and a <span class="r r-s"></span> national traveling under
+    the name <span class="r r-m"></span>. It was at this gathering that <span class="name">Eli</span>
+    is believed to have first proposed using <span class="kw">the plane</span> — a Bombardier
+    <span class="r r-s"></span> registered to <span class="r r-l"></span> Holdings LLC,
+    a shell company incorporated in <span class="r r-m"></span> — as the primary transport
+    vehicle for the operation.
+  </p>
+
+  <p>
+    According to <span class="r r-m"></span>, <span class="name">Eli</span> argued that
+    <span class="kw">the plane</span> offered unparalleled flexibility: it could land on
+    <span class="r r-m"></span> airstrips inaccessible to commercial carriers and,
+    critically, the aircraft's registration shielded it from routine <span class="r r-l"></span>
+    inspection protocols. <span class="r r-l"></span> and <span class="r r-m"></span> both
+    agreed to the proposal. <span class="name">Eli</span> was given operational control.
+  </p>
+
+  <div class="r-block"></div>
+  <div class="r-block three-quarter"></div>
+  <div class="r-block half"></div>
+
+  <hr class="divider" />
+
+  <!-- Section III -->
+  <div class="section-label">Section III — Elliot's Role &amp; Logistical Cover</div>
+
+  <p>
+    <span class="name">Elliot</span> <span class="r r-m"></span>, age <span class="r r-xs"></span>,
+    was employed as head of <span class="r r-m"></span> operations at <span class="r r-l"></span>
+    Aviation Group, a <span class="r r-m"></span>-based charter firm with contracts across
+    <span class="r r-m"></span> and <span class="r r-m"></span>. Agents believe <span class="name">Elliot</span>
+    was recruited by <span class="name">Eli</span> no later than <span class="r r-s"></span>,
+    after <span class="name">Eli</span> leveraged information obtained through
+    <span class="r r-l"></span> regarding <span class="name">Elliot</span>'s <span class="r r-xl"></span>.
+  </p>
+
+  <p>
+    <span class="name">Elliot</span>'s function within the conspiracy was to file falsified
+    flight plans for <span class="kw">the plane</span>, substituting legitimate cargo manifests
+    with documentation describing <span class="r r-l"></span> shipments bound for <span class="r r-m"></span>
+    clients. On at least <span class="r r-xs"></span> confirmed occasions, <span class="name">Elliot</span>
+    coordinated directly with <span class="r r-m"></span> and <span class="r r-m"></span> at
+    <span class="r r-l"></span> to ensure that flight records for <span class="kw">the plane</span>
+    did not appear in <span class="r r-m"></span> tracking databases during transits to
+    <span class="kw">the islands</span>.
+  </p>
+
+  <p>
+    In intercepted communications dated <span class="r r-s"></span>, <span class="name">Elliot</span>
+    is heard confirming a departure window to an unidentified individual: <em>"<span class="r r-l"></span>
+    is clear, <span class="kw">the plane</span> leaves at <span class="r r-xs"></span>.
+    Make sure <span class="r r-m"></span> knows not to log it."</em> Voice analysis conducted
+    by <span class="r r-m"></span> confirmed the speaker as <span class="name">Elliot</span>
+    with <span class="r r-s"></span> percent certainty.
+  </p>
+
+  <p>
+    When questioned by <span class="r r-m"></span> investigators on <span class="r r-s"></span>,
+    <span class="name">Elliot</span> denied any knowledge of <span class="name">Eli</span>'s
+    operations, claiming the flight plan irregularities were the result of <span class="r r-xl"></span>
+    within the <span class="r r-m"></span> software system. <span class="name">Elliot</span>
+    was released after <span class="r r-xs"></span> hours pending further review.
+    <span class="r r-l"></span> subsequently confirmed that <span class="r r-m"></span>
+    had visited <span class="name">Elliot</span>'s residence <span class="r r-xs"></span>
+    days prior to the interview.
+  </p>
+
+  <hr class="divider" />
+
+  <!-- Section IV -->
+  <div class="section-label">Section IV — The Islands Network</div>
+
+  <p>
+    <span class="kw">The islands</span> referenced throughout this file refer not to a single
+    location but to a network of <span class="r r-xs"></span> staging points operated by
+    <span class="r r-l"></span> in coordination with <span class="r r-m"></span> and,
+    allegedly, <span class="r r-m"></span> state actors. The primary node is located at
+    <span class="r r-l"></span>, approximately <span class="r r-xs"></span> nautical miles
+    from the coast of <span class="r r-m"></span>, outside the exclusive economic zone of
+    any recognized nation-state. <span class="name">Eli</span> reportedly refers to
+    <span class="kw">the islands</span> in communications as <em>"<span class="r r-m"></span>"</em>
+    — a term whose origin remains under analysis by <span class="r r-m"></span>.
+  </p>
+
+  <p>
+    <span class="kw">The islands</span> are equipped with <span class="r r-l"></span> capable
+    of accommodating <span class="kw">the plane</span>, as well as <span class="r r-xl"></span>
+    for cold storage of <span class="r r-m"></span>. Satellite imagery obtained by
+    <span class="r r-m"></span> on <span class="r r-s"></span> shows <span class="r r-xs"></span>
+    vessels docked at <span class="kw">the islands</span>' primary pier, one of which matches
+    the profile of a <span class="r r-l"></span> registered to <span class="r r-m"></span>,
+    a known associate of <span class="name">Eli</span>.
+  </p>
+
+  <p>
+    Signals intelligence gathered between <span class="r r-s"></span> and <span class="r r-s"></span>
+    indicates that <span class="kw">the islands</span> processed an estimated <span class="r r-s"></span>
+    <span class="r r-l"></span> during this period, with outgoing transfers routed through
+    <span class="r r-m"></span> accounts held at <span class="r r-l"></span> Bank,
+    <span class="r r-m"></span>. The financial trail leads to <span class="r r-l"></span>
+    before terminating at a series of accounts whose ultimate beneficiary is believed —
+    but not yet confirmed — to be <span class="name">Eli</span>.
+  </p>
+
+  <div class="r-block"></div>
+  <div class="r-block three-quarter"></div>
+
+  <hr class="divider" />
+
+  <!-- Section V -->
+  <div class="section-label">Section V — The Plane: Operational Record</div>
+
+  <p>
+    <span class="kw">The plane</span>, tail number <span class="r r-s"></span>, completed
+    no fewer than <span class="r r-xs"></span> undisclosed flights to <span class="kw">the islands</span>
+    between <span class="r r-s"></span> and <span class="r r-s"></span>. Fuel records
+    subpoenaed from <span class="r r-m"></span> FBO confirm landings at <span class="r r-m"></span>
+    and <span class="r r-m"></span> during this window, with gaps in the official log
+    consistent with <span class="r r-m"></span>-hour detours to the coordinates associated
+    with <span class="kw">the islands</span>.
+  </p>
+
+  <p>
+    On the night of <span class="r r-s"></span>, a crew member employed by
+    <span class="r r-l"></span> Aviation — subsequently identified as <span class="r r-m"></span>
+    and later found to be cooperating with <span class="r r-l"></span> — reported that
+    <span class="name">Eli</span> boarded <span class="kw">the plane</span> personally for
+    the first time. Until that point, <span class="name">Eli</span> had maintained physical
+    distance from <span class="kw">the plane</span>, communicating only through <span class="name">E</span>
+    and <span class="r r-m"></span>. The crew member stated that <span class="name">Eli</span>
+    carried a <span class="r r-m"></span> case and met briefly with <span class="r r-l"></span>
+    aboard the aircraft before departing for <span class="kw">the islands</span>.
+  </p>
+
+  <p>
+    Upon arrival at <span class="kw">the islands</span>, <span class="name">Eli</span>
+    participated in a meeting with <span class="r r-l"></span>, <span class="r r-m"></span>,
+    and at least one individual whose identity remains unknown to this agency. The meeting
+    lasted approximately <span class="r r-xs"></span> hours. <span class="kw">The plane</span>
+    departed <span class="kw">the islands</span> before dawn. <span class="name">Eli</span>
+    was not aboard for the return flight.
+  </p>
+
+  <hr class="divider" />
+
+  <!-- Section VI -->
+  <div class="section-label">Section VI — Communications: Eli and E</div>
+
+  <p>
+    The most significant intercept in this investigation was obtained on <span class="r r-s"></span>
+    by <span class="r r-m"></span> using <span class="r r-l"></span> surveillance authorized
+    under <span class="r r-m"></span>. The recording captures a conversation between
+    <span class="name">Eli</span> and the individual known as <span class="name">E</span>.
+    The nature of the relationship between <span class="name">Eli</span> and
+    <span class="name">E</span> remains a subject of active analysis; some analysts within
+    <span class="r r-m"></span> have speculated that <span class="name">E</span> and
+    <span class="name">Eli</span> may be <span class="r r-xl"></span>, while others maintain
+    that <span class="name">E</span> is an entirely separate individual operating under
+    <span class="name">Eli</span>'s direction.
+  </p>
+
+  <p>
+    In the intercept, <span class="name">E</span> is heard saying: <em>"Make sure
+    <span class="kw">the plane</span> is ready. <span class="kw">The islands</span>
+    go dark after <span class="r r-m"></span>. No second window."</em>
+    <span class="name">Eli</span> responds: <em>"<span class="r r-m"></span> knows.
+    <span class="name">Elliot</span> handled the logs. We're clean."</em>
+    <span class="name">E</span> then states: <em>"<span class="r r-l"></span>
+    is watching <span class="r r-m"></span>. Use the <span class="r r-m"></span> route."</em>
+    The remainder of the conversation is <span class="r r-xl"></span>.
+  </p>
+
+  <p>
+    Linguistic analysis of <span class="name">E</span>'s voice was inconclusive.
+    <span class="r r-m"></span> identified <span class="r r-xs"></span> potential matches
+    within existing voiceprint databases; however, <span class="r r-l"></span>
+    later determined that <span class="r r-xl"></span> had been applied to the recording,
+    obscuring biometric markers. The identity of <span class="name">E</span> remains
+    unknown as of the date of this report.
+  </p>
+
+  <div class="r-block"></div>
+  <div class="r-block"></div>
+  <div class="r-block half"></div>
+
+  <hr class="divider" />
+
+  <!-- Section VII -->
+  <div class="section-label">Section VII — Attempted Arrest &amp; Disappearance</div>
+
+  <p>
+    A coordinated operation to detain <span class="name">Eli</span> was authorized by
+    <span class="r r-l"></span> on <span class="r r-s"></span> and assigned to a
+    joint task force comprising agents from <span class="r r-m"></span>,
+    <span class="r r-m"></span>, and <span class="r r-l"></span>. The task force
+    moved on <span class="name">Eli</span>'s last confirmed address in <span class="r r-m"></span>
+    at <span class="r r-xs"></span> on <span class="r r-s"></span>.
+  </p>
+
+  <p>
+    The residence was vacant. Evidence recovered at the scene included <span class="r r-l"></span>,
+    a <span class="r r-m"></span> device with a destroyed <span class="r r-m"></span>,
+    and handwritten notes referencing <span class="kw">the islands</span> and a series of
+    coordinates subsequently matched to <span class="r r-l"></span>. Neighbors reported
+    that a vehicle matching the description of <span class="r r-m"></span>'s registered
+    <span class="r r-m"></span> had departed the area approximately <span class="r r-xs"></span>
+    hours before the task force arrived.
+  </p>
+
+  <p>
+    Airport surveillance at <span class="r r-m"></span> International captured an individual
+    matching <span class="name">Eli</span>'s physical description boarding a private terminal
+    at <span class="r r-xs"></span>. The aircraft — believed to be <span class="kw">the plane</span>
+    — had filed a flight plan to <span class="r r-m"></span> but deviated from its registered
+    route approximately <span class="r r-xs"></span> minutes after departure. Radar contact
+    was lost over <span class="r r-m"></span>. <span class="name">Eli</span>'s current
+    whereabouts are unknown.
+  </p>
+
+  <p>
+    <span class="name">E</span> was never located. <span class="r r-xl"></span>
+    placed by <span class="r r-m"></span> at two separate locations simultaneously on
+    the day of the attempted arrest, suggesting either the use of a decoy or that intelligence
+    regarding <span class="name">E</span>'s identity and movements was <span class="r r-l"></span>.
+    <span class="name">Elliot</span> was brought in for a second interview on <span class="r r-s"></span>
+    and released without charge after <span class="r r-xs"></span> hours. <span class="name">Elliot</span>'s
+    current cooperation status is <span class="r r-m"></span>.
+  </p>
+
+  <hr class="divider" />
+
+  <!-- Section VIII -->
+  <div class="section-label">Section VIII — Current Status &amp; Recommendations</div>
+
+  <p>
+    This investigation remains <span class="r r-m"></span>. The disappearance of
+    <span class="name">Eli</span>, the unknown identity of <span class="name">E</span>,
+    and the continued operation of <span class="kw">the islands</span> network represent
+    active threats assessed at <span class="r r-m"></span> level by <span class="r r-l"></span>.
+    <span class="kw">The plane</span> has not been recovered and its current registration
+    status is <span class="r r-m"></span> following the dissolution of <span class="r r-l"></span>
+    Holdings LLC in <span class="r r-s"></span>.
+  </p>
+
+  <p>
+    Analysts at <span class="r r-l"></span> recommend immediate escalation to <span class="r r-m"></span>
+    and the establishment of a <span class="r r-m"></span> surveillance posture over
+    all known entry points to <span class="kw">the islands</span>. Additionally,
+    <span class="r r-l"></span> has requested authority to conduct <span class="r r-xl"></span>
+    operations within <span class="r r-m"></span> jurisdiction targeting remaining
+    associates of <span class="name">Eli</span>. That request is currently pending
+    review by <span class="r r-l"></span>.
+  </p>
+
+  <p>
+    Until <span class="name">Eli</span>, <span class="name">E</span>, and
+    <span class="name">Elliot</span>'s full involvement can be determined and prosecuted,
+    this file will remain classified at the highest available level. Distribution is
+    restricted to <span class="r r-l"></span>-cleared personnel only. Any unauthorized
+    access to this document must be reported immediately to <span class="r r-l"></span>
+    under penalty of <span class="r r-xl"></span>.
+  </p>
+
+  <div class="r-block"></div>
+  <div class="r-block three-quarter"></div>
+  <div class="r-block half"></div>
+
+  <!-- Footer -->
+  <div class="doc-footer">
+    <span>Prepared by: <span class="r r-m"></span></span>
+    <span>Reviewed by: <span class="r r-m"></span></span>
+    <span>Approved: <span class="r r-s"></span></span>
+  </div>
+  <div class="page-num">Page 1 of <span class="r r-xs"></span> &mdash; Handle Per <span class="r r-m"></span> Protocols</div>
+</div>
+
+</body>
+</html>
